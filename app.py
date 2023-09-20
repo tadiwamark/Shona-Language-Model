@@ -11,6 +11,8 @@ import streamlit as st
 from keras.preprocessing.sequence import pad_sequences
 from keras.preprocessing.text import Tokenizer
 import numpy as np
+import pickle
+
 
 # Initialize the tokenizer
 tokenizer = Tokenizer()
