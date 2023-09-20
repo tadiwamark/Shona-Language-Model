@@ -19,7 +19,6 @@ tokenizer = Tokenizer()
 model = load_model("best_model1.h5")
 
 # Create tokenizer function
-@st.cache
 def predict_next_words(model, text, num_to_predict):
     for _ in range(num_to_predict):
         token_list = tokenizer.texts_to_sequences([text])[0]
