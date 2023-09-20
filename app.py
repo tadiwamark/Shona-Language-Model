@@ -32,7 +32,7 @@ def predict_next_words(model, text, num_to_predict):
     return text
 
 # Streamlit UI
-st.title("Shona/Ndebele Language Model")
+st.title("Shona Language Model")
 user_input = st.text_area("Type 5 words in Shona:")
 if st.button("Predict"):
     prediction = predict_next_words(model, user_input, 1)
