@@ -35,21 +35,14 @@ def predict_next_words(model, tokenizer, text, num_words=1):
     Returns:
     - str: The predicted words.
     """
-    st.write("Inside function...")  # Debug print
     for _ in range(num_words):
-        st.write("In the loop...")  # Debug print
-
         # Tokenize and pad the text
         sequence = tokenizer.texts_to_sequences([text])[0]
-        st.write(f"Sequence: {sequence}")  # Debug print
-
         sequence = pad_sequences([sequence], maxlen=5, padding='pre')
-        st.write(f"Padded sequence: {sequence}")  # Debug print
         
         # Predict the next word
         predicted_probs = model.predict(sequence, verbose=0)
         predicted = np.argmax(predicted_probs, axis=-1)
-        st.write(f"Predicted index: {predicted}")  # Debug print
         
         # Convert the predicted word index to a word
         output_word = ""
@@ -57,8 +50,6 @@ def predict_next_words(model, tokenizer, text, num_words=1):
             if index == predicted:
                 output_word = word
                 break
-        
-        st.write(f"Output word: {output_word}")  # Debug print
 
         # Append the predicted word to the text
         text += " " + output_word
