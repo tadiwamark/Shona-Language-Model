@@ -5,8 +5,9 @@ Created on Sat Sep 16 12:04:22 2023
 @author: tadiw
 """
 
+
+from tensorflow.keras.models import load_model
 import streamlit as st
-from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 
 # Load the model
