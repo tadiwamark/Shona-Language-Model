@@ -11,7 +11,7 @@ import streamlit as st
 from keras.preprocessing.sequence import pad_sequences
 
 # Load the model
-model = load_model("best_model.h5")
+model = load_model("best_model1.h5")
 
 # Create tokenizer function
 def predict_next_words(model, text, num_to_predict):
@@ -29,7 +29,7 @@ def predict_next_words(model, text, num_to_predict):
 
 # Streamlit UI
 st.title("Shona/Ndebele Language Model")
-user_input = st.text_area("Type 5 words in Shona or Ndebele:")
+user_input = st.text_area("Type 5 words in Shona:")
 if st.button("Predict"):
     prediction = predict_next_words(model, user_input, 1)
     st.write(prediction)
