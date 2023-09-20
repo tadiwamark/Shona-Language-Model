@@ -9,6 +9,10 @@ Created on Sat Sep 16 12:04:22 2023
 from tensorflow.keras.models import load_model
 import streamlit as st
 from keras.preprocessing.sequence import pad_sequences
+from keras.preprocessing.text import Tokenizer
+
+# Initialize the tokenizer
+tokenizer = Tokenizer()
 
 # Load the model
 model = load_model("best_model1.h5")
