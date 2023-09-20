@@ -19,20 +19,48 @@ tokenizer = Tokenizer()
 model = load_model("best_model1.h5")
 
 # Create tokenizer function
-def predict_next_words(model, text, num_to_predict):
-    for _ in range(num_to_predict):
-        token_list = tokenizer.texts_to_sequences([text])[0]
-        token_list = pad_sequences([token_list], maxlen=5, padding='pre')
-        probabilities = model.predict(token_list, verbose=0)
-        predicted = np.argmax(probabilities, axis=-1)
+def predict_next_words(model, tokenizer, text, num_words=1):
+    """
+    Predict the next set of words using the trained model.
+    
+    Args:
+    - model (keras.Model): The trained model.
+    - tokenizer (Tokenizer): The tokenizer object used for preprocessing.
+    - text (str): The input text.
+    - num_words (int): The number of words to predict.
 
+    Returns:
+    - str: The predicted words.
+    """
+    st.write("Inside function...")  # Debug print
+    for _ in range(num_words):
+        st.write("In the loop...")  # Debug print
+
+        # Tokenize and pad the text
+        sequence = tokenizer.texts_to_sequences([text])[0]
+        st.write(f"Sequence: {sequence}")  # Debug print
+
+        sequence = pad_sequences([sequence], maxlen=5, padding='pre')
+        st.write(f"Padded sequence: {sequence}")  # Debug print
+        
+        # Predict the next word
+        predicted_probs = model.predict(sequence, verbose=0)
+        predicted = np.argmax(predicted_probs, axis=-1)
+        st.write(f"Predicted index: {predicted}")  # Debug print
+        
+        # Convert the predicted word index to a word
         output_word = ""
         for word, index in tokenizer.word_index.items():
             if index == predicted:
                 output_word = word
                 break
+        
+        st.write(f"Output word: {output_word}")  # Debug print
+
+        # Append the predicted word to the text
         text += " " + output_word
-    return text
+
+    return ' '.join(text.split(' ')[-num_words:])
 
 # Streamlit UI
 st.title("Shona Language Model")
