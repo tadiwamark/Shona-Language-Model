@@ -19,6 +19,7 @@ tokenizer = Tokenizer()
 model = load_model("best_model1.h5")
 
 # Create tokenizer function
+@st.cache
 def predict_next_words(model, text, num_to_predict):
     for _ in range(num_to_predict):
         token_list = tokenizer.texts_to_sequences([text])[0]
@@ -38,5 +39,5 @@ def predict_next_words(model, text, num_to_predict):
 st.title("Shona Language Model")
 user_input = st.text_area("Type 5 words in Shona:")
 if st.button("Predict"):
-    prediction = predict_next_words(model, user_input, 1)
-    st.write(prediction)
+    predicted_words = predict_next_words(model, tokenizer, user_input, num_words=3)
+    st.write(f"The next words might be: {predicted_words}")
