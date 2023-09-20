@@ -14,8 +14,9 @@ import numpy as np
 import pickle
 
 
-# Initialize the tokenizer
-tokenizer = Tokenizer()
+# Load the tokenizer
+with open('tokenizer.pkl', 'rb') as tokenizer_file:
+    tokenizer = pickle.load(tokenizer_file)
 
 # Load the model
 model = load_model("best_model1.h5")
