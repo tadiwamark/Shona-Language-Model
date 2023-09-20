@@ -58,6 +58,16 @@ def predict_next_words(model, tokenizer, text, num_words=1):
 
 # Streamlit UI
 st.title("Shona Language Model")
+import streamlit as st
+import time
+
+# Flashing warning
+for _ in range(5):
+    st.markdown("<span style='color:red'>**WARNING:** This model is trained on Jehovah's Witness reading material and does not represent the entire Shona language.</span>", unsafe_allow_html=True)
+    time.sleep(0.5)
+    st.markdown("<span style='color:white'>**WARNING:** This model is trained on Jehovah's Witness reading material and does not represent the entire Shona language.</span>", unsafe_allow_html=True)
+    time.sleep(0.5)
+
 user_input = st.text_area("Type 5 words in Shona:")
 if st.button("Predict"):
     predicted_words = predict_next_words(model, tokenizer, user_input, num_words=3)
