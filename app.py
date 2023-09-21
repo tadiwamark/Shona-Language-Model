@@ -19,7 +19,7 @@ with open('tokenizer.pkl', 'rb') as tokenizer_file:
     tokenizer = pickle.load(tokenizer_file)
 
 # Load the model
-model = load_model("best_model2.h5")
+model = load_model("best_model1.h5")
 
 # Create tokenizer function
 def predict_next_words(model, tokenizer, text, num_words=1):
