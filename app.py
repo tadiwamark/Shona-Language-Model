@@ -63,9 +63,9 @@ import time
 
 # Flashing warning
 for _ in range(1):
-    st.markdown("<span style='color:red'>**WARNING:** This model is trained on Jehovah's Witness reading material and does not represent the entire Shona language.</span>", unsafe_allow_html=True)
+    st.markdown("<span style='color:red'>**DISCLAIMER:** This model is trained on Jehovah's Witness reading material and does not represent the entire Shona language.</span>", unsafe_allow_html=True)
     time.sleep(0.5)
-    st.markdown("<span style='color:white'>**WARNING:** This model is trained on Jehovah's Witness reading material and does not represent the entire Shona language.</span>", unsafe_allow_html=True)
+    st.markdown("<span style='color:blue'>**DISCLAIMER:** This model is trained on Jehovah's Witness reading material and does not represent the entire Shona language.</span>", unsafe_allow_html=True)
     time.sleep(0.5)
 
 user_input = st.text_area("Type 5 words in Shona:")
