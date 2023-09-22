@@ -68,7 +68,7 @@ for _ in range(1):
     st.markdown("<span style='color:blue'>**DISCLAIMER:** This model is trained on Jehovah's Witness reading material and does not represent the entire Shona language.</span>", unsafe_allow_html=True)
     time.sleep(0.5)
 
-user_input = st.text_area("Type 5 words in Shona:")
+user_input = st.text_area("Type 5 words in Shona that might be found in Jehovha's witness reading and I'll try and predict the next word/s:")
 if st.button("Predict"):
     predicted_words = predict_next_words(model, tokenizer, user_input, num_words=3)
     st.write(f"The next words might be: {predicted_words}")
